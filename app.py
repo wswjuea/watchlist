@@ -63,12 +63,21 @@ class Movie(db.Model):
 #     db.session.commit()
 #     click.echo('Done.')
 
+@app.context_processor
+def inject_user():
+    user = User.query.get(1)
+    return dict(user=user)  # 等同于return {'user': user}
+
 
 @app.route('/')
 def index():
-    user = User.query.first()
     movies = Movie.query.all()
-    return render_template("index.html", user=user, movies=movies)
+    return render_template("index.html", movies=movies)
+
+
+@app.errorhandler(404)
+def page_not_found(error):  # 接受异常对象作为参数
+    return render_template("404.html"), 404  # 返回了状态码作为第二个参数,一般视图函数默认返回状态码200
 
 
 if __name__ == "__main__":
