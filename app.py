@@ -200,7 +200,7 @@ def edit(movie_id):
         movie.title = title
         movie.year = year
         db.session.commit()
-        flash('Item created.')
+        flash('Item updated.')
         return redirect(url_for('index'))
 
     return render_template('edit.html', movie=movie)

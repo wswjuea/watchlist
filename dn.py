@@ -22,9 +22,9 @@ path = 'C:/Users/Administrator/Desktop/dn/'
 ret, eof, info = bucket.list(bucket_name, prefix, marker, limit, delimiter)
 for i in ret['items']:
     print(i['key'])
-    base_url = 'http://q3qa2e2ds.bkt.clouddn.com/'+i['key']
+    base_url = 'http://q3qa2e2ds.bkt.clouddn.com/' + i['key']
     print(base_url)
-    #如果空间有时间戳防盗链或是私有空间，可以调用该方法生成私有链接
+    # 如果空间有时间戳防盗链或是私有空间，可以调用该方法生成私有链接
     private_url = q.private_download_url(base_url, expires=100)
     print(private_url)
     r = requests.get(base_url)

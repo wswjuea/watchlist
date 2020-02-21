@@ -4,8 +4,8 @@
 <p>{{ movies | length }} Titles</p>
 {% if current_user.is_authenticated %}
 <form method="post">
-    Name <input type="text" name="title" autocapitalize="off" required>
-    Year <input type="text" name="year" autocapitalize="off" required>
+    Name <input type="text" name="title" autocapitalize="off">
+    Year <input type="text" name="year" autocapitalize="off">
     <input class="btn" type="submit" name="submit" value="Add">
 </form>
 {% endif %}
